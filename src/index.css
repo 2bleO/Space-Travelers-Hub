@@ -51,3 +51,9 @@ h1 {
   margin-right: -1050px;
   margin-left: 50px;
 }
+
+.page {
+  margin-top: 80px;
+  float: left;
+  margin-left: 50px;
+}
