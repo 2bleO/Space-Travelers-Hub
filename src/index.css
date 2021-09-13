@@ -17,4 +17,37 @@ nav {
   justify-content: space-between;
   align-items: center;
   width: 100vw;
+  border-bottom: solid 1px #dee2e6;
+}
+
+
+.links {
+  display: flex;
+  margin-right: 8%;
+}
+
+.links 
+a {
+  color: #60aaff;
+}
+
+.missions a,
+.profile 
+a {
+  text-decoration: none;
+}
+
+.link {
+  margin-left: 2%;
+  padding: 2px;
+  width: 80px;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+.planet {
+  margin-right: -1050px;
+  margin-left: 50px;
 }
