@@ -15,7 +15,13 @@ function RocketsPage() {
     const data = await fetch('https://api.spacexdata.com/v3/rockets');
     const rockets = await data.json();
     Object.entries(rockets).map((rocket) => {
-      rocketsArray.push(rocket[1]);
+      const rocketObject = {
+        id: rocket[1].id,
+        rocket_name: rocket[1].name,
+        description: rocket[1].description,
+        image: rocket[1].flickr_images,
+      };
+      rocketsArray.push(rocketObject);
     });
     console.log(rocketsArray);
     setRockets(rocketsArray);
@@ -30,11 +36,11 @@ function RocketsPage() {
     <div className="page">
       {rockets.map((rocket) => (
         <div className="rocket">
-          <img src={rocket.flickr_images} alt="rocket" width="150px" />
+          <img src={rocket.image} alt="rocket" width="150px" />
           <div className="rocket_details">
             <div>{rocket.rocket_name}</div>
             <div className="description">{rocket.description}</div>
-            <button type="submit">Reserve Rocket</button>
+            <button type="button" className="btn btn-primary">Reserve Rocket</button>
           </div>
         </div>
       ))}

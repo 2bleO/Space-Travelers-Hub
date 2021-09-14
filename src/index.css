@@ -36,7 +36,7 @@ nav {
 
 .links {
   display: flex;
-  margin-right: 8%;
+  margin-right: 12%;
 }
 
 .links a {
@@ -51,11 +51,12 @@ nav {
 .link {
   margin-left: 2%;
   padding: 2px;
-  width: 80px;
+  width: 120px;
 }
 
 h1 {
   font-size: 30px;
+  margin-left: 180px;
 }
 
 .planet {
