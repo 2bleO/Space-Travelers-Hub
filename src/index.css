@@ -35,8 +35,8 @@ nav {
 }
 
 .links {
-  display: flex;
   margin-right: 12%;
+  display: flex;
 }
 
 .links a {
