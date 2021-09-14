@@ -5,11 +5,12 @@
 /* eslint-disable array-callback-return */
 import React, { useState, useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { updateState } from '../redux/rockets/rockets';
 
 function RocketsPage() {
+  const storeRockets = useSelector((state) => state.rocketsReducer);
   const dispatch = useDispatch();
   const [rockets, setRockets] = useState([]);
   const fetchItems = async () => {
@@ -59,9 +60,9 @@ function RocketsPage() {
 
   return (
     <div className="page">
-      {rockets.map((rocket) => (
+      {storeRockets.map((rocket) => (
         <div className="rocket">
-          <img src={rocket.image} alt="rocket" width="150px" />
+          <img src={rocket.flickr_images} alt="rocket" width="150px" />
           <div className="rocket_details" id={rocket.id + 100}>
             <div>
               <h4>{rocket.rocket_name}</h4>
