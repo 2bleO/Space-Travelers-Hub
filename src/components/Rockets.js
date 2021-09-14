@@ -1,3 +1,6 @@
+/* eslint-disable no-template-curly-in-string */
+/* eslint-disable react/no-this-in-sfc */
+/* eslint-disable space-before-function-paren */
 /* eslint-disable react/jsx-key */
 /* eslint-disable array-callback-return */
 import React, { useState, useEffect } from 'react';
@@ -16,7 +19,7 @@ function RocketsPage() {
     Object.entries(rockets).map((rocket) => {
       const rocketObject = {
         id: rocket[1].id,
-        rocket_name: rocket[1].name,
+        rocket_name: rocket[1].rocket_name,
         description: rocket[1].description,
         image: rocket[1].flickr_images,
         reserved: false,
@@ -42,23 +45,38 @@ function RocketsPage() {
     dispatch(updateState(rockets));
   }
 
+  function showReservation (id) {
+    if (document.getElementById(id).classList.contains('btn-primary') === false) {
+      document.getElementById(id).style.backgroundColor = 'none';
+      document.getElementById(id).classList.add('btn-primary');
+      document.getElementById(id).innerHTML = 'Reserve Rocket';
+    } else {
+      document.getElementById(id).classList.remove('btn-primary');
+      document.getElementById(id).innerHTML = 'Cancel Reservation';
+    }
+  }
+
   return (
     <div className="page">
       {rockets.map((rocket) => (
         <div className="rocket">
           <img src={rocket.image} alt="rocket" width="150px" />
           <div className="rocket_details">
-            <div>{rocket.rocket_name}</div>
-            <div className="description">{rocket.description}</div>
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={() => {
-                fetchRocket(rocket.id);
-              }}
-            >
-              Reserve Rocket
-            </button>
+            <div>
+              <h4>{rocket.rocket_name}</h4>
+              <div className="description">{rocket.description}</div>
+              <button
+                type="button"
+                className="btn btn-primary"
+                id={rocket.id}
+                onClick={() => {
+                  fetchRocket(rocket.id);
+                  showReservation(rocket.id);
+                }}
+              >
+                Reserve Rocket
+              </button>
+            </div>
           </div>
         </div>
       ))}
