@@ -5,10 +5,12 @@ const GET_MISSIONS = 'Space-Travelers-Hub/missions/GET_MISSIONS';
 const initialState = [];
 const BASE_URL = 'https://api.spacexdata.com/v3';
 
-export const getMissions = () => async () => {
+export const getMissions = async () => {
   const missions = await axios.get(`${BASE_URL}/missions`);
+  // const data = await fetch(`${BASE_URL}/missions`);
   // const missionsObj = await missions.data;
-  console.log(missions);
+  // const missions = await data.json();
+  console.log(missions.data);
   /*
   const list = Object.keys(booksObj);
   const fetchedBooks = [];
