@@ -1,11 +1,10 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable array-callback-return */
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import { getRockets } from '../redux/rockets/rockets';
+import { updateState } from '../redux/rockets/rockets';
 
 function RocketsPage() {
   const dispatch = useDispatch();
@@ -20,17 +19,28 @@ function RocketsPage() {
         rocket_name: rocket[1].name,
         description: rocket[1].description,
         image: rocket[1].flickr_images,
+        reserved: false,
       };
       rocketsArray.push(rocketObject);
     });
-    console.log(rocketsArray);
     setRockets(rocketsArray);
-    dispatch(getRockets(rocketsArray));
+    dispatch(updateState(rockets));
   };
 
   useEffect(() => {
     fetchItems();
   }, []);
+
+  function fetchRocket(index) { // the curly brace opens a multiline function
+    const rocketsArray = rockets;
+    if (rocketsArray[index - 1].reserved === true) {
+      rocketsArray[index - 1].reserved = false;
+    } else {
+      rocketsArray[index - 1].reserved = true;
+    }
+    setRockets(rocketsArray);
+    dispatch(updateState(rockets));
+  }
 
   return (
     <div className="page">
@@ -40,7 +50,15 @@ function RocketsPage() {
           <div className="rocket_details">
             <div>{rocket.rocket_name}</div>
             <div className="description">{rocket.description}</div>
-            <button type="button" className="btn btn-primary">Reserve Rocket</button>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => {
+                fetchRocket(rocket.id);
+              }}
+            >
+              Reserve Rocket
+            </button>
           </div>
         </div>
       ))}
