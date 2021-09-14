@@ -70,5 +70,16 @@ h1 {
 }
 
 .rocket {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.rocket_details {
+  margin-left: 5%;
+  width: 600px;
+  height: 100%;
+}
+
+.description {
+  margin-bottom: 2%;
 }

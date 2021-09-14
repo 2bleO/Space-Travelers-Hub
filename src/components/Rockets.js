@@ -19,6 +19,7 @@ function RocketsPage() {
     });
     console.log(rocketsArray);
     setRockets(rocketsArray);
+    dispatch(getRockets(rocketsArray));
   };
 
   useEffect(() => {
@@ -30,6 +31,11 @@ function RocketsPage() {
       {rockets.map((rocket) => (
         <div className="rocket">
           <img src={rocket.flickr_images} alt="rocket" width="150px" />
+          <div className="rocket_details">
+            <div>{rocket.rocket_name}</div>
+            <div className="description">{rocket.description}</div>
+            <button type="submit">Reserve Rocket</button>
+          </div>
         </div>
       ))}
     </div>
