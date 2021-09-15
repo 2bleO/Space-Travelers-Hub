@@ -1,19 +1,29 @@
 import { useEffect, React } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getMissions } from '../redux/missions/missions';
 
 const Missions = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const missions = useSelector((state) => state.missionReducer);
   useEffect(() => {
-    getMissions();
-    // dispatch(getBooks());
-  }, [/* dispatch */]);
-
+    if (missions.length === 0) {
+      dispatch(getMissions());
+    }
+  }, []);
+  console.log(missions);
   return (
     <>
-      <div>
-        <h1>Test</h1>
-      </div>
+      <ul>
+        { missions.map((mission) => (
+          <li key={mission.mission_id}>
+            <div>
+              <span>{mission.mission_name}</span>
+              <span>{mission.description}</span>
+              <span>{mission.wikipedia}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
     </>
   );
 };
