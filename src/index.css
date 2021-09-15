@@ -93,8 +93,6 @@ h1 {
   color: white;
   height: 12%;
   width: 140px;
-  display: flex;
-  display: none;
 }
 
 .reserved_rockets {
