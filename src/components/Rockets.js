@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-template-curly-in-string */
 /* eslint-disable react/no-this-in-sfc */
 /* eslint-disable space-before-function-paren */
@@ -5,12 +6,11 @@
 /* eslint-disable array-callback-return */
 import React, { useState, useEffect } from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { RootStateOrAny, useSelector, useDispatch } from 'react-redux';
 
 import { updateState } from '../redux/rockets/rockets';
 
 function RocketsPage() {
-  const storeRockets = useSelector((state) => state.rocketsReducer);
   const dispatch = useDispatch();
   const [rockets, setRockets] = useState([]);
   const fetchItems = async () => {
@@ -28,15 +28,17 @@ function RocketsPage() {
       rocketsArray.push(rocketObject);
     });
     setRockets(rocketsArray);
-    dispatch(updateState(rockets));
+    dispatch(updateState(rocketsArray));
   };
+
+  const storeRockets = useSelector((state, RootStateOrAny) => state.rocketsReducer);
 
   useEffect(() => {
     fetchItems();
   }, []);
 
-  function fetchRocket(index) { // the curly brace opens a multiline function
-    const rocketsArray = rockets;
+  function reserveRocket(index) { // the curly brace opens a multiline function
+    const rocketsArray = [...storeRockets];
     if (rocketsArray[index - 1].reserved === true) {
       rocketsArray[index - 1].reserved = false;
     } else {
@@ -60,10 +62,10 @@ function RocketsPage() {
 
   return (
     <div className="page">
-      {storeRockets.map((rocket) => (
+      {rockets.map((rocket) => (
         <div className="rocket">
-          <img src={rocket.flickr_images} alt="rocket" width="150px" />
-          <div className="rocket_details" id={rocket.id + 100}>
+          <img src={rocket.image[0]} alt="rocket" width="150px" />
+          <div className="rocket_details">
             <div>
               <h4>{rocket.rocket_name}</h4>
               <div className="description">
@@ -75,8 +77,8 @@ function RocketsPage() {
                 className="btn btn-primary"
                 id={rocket.rocket_name}
                 onClick={() => {
-                  fetchRocket(rocket.id);
-                  showReservation(rocket.rocket_name, rocket.description);
+                  reserveRocket(rocket.id);
+                  showReservation(rocket.rocket_name, rocket.description, rockets.flickr_images);
                 }}
               >
                 Reserve Rocket
