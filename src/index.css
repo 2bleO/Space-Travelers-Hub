@@ -88,12 +88,9 @@ h1 {
 
 .reserved {
   margin-right: 2%;
-  display: none;
   background-color: #18a2b8;
   color: white;
   height: 12%;
   width: 140px;
-  display: flex;
   display: none;
 }
-
