@@ -4,7 +4,7 @@ import planet from './planet.png';
 
 const Header = () => (
   <>
-    <nav style={{ position: 'fixed', top: '0' }}>
+    <nav>
       <div className="planet"><img src={planet} alt="planet" width="50px" /></div>
       <h1>Space Travelers&lsquo;s Hub </h1>
       <div className="links">

@@ -13,17 +13,25 @@ const Missions = () => {
   console.log(missions);
   return (
     <>
-      <ul>
-        { missions.map((mission) => (
-          <li key={mission.mission_id}>
-            <div>
-              <span>{mission.mission_name}</span>
-              <span>{mission.description}</span>
-              <span>{mission.wikipedia}</span>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">Mission</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+            <th scope="col"> </th>
+          </tr>
+        </thead>
+        <tbody>
+          { missions.map((mission) => (
+            <tr key={mission.mission_id}>
+              <th scope="row">{mission.mission_name}</th>
+              <td>{mission.description}</td>
+              <td>Not a Member</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   );
 };
