@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-template-curly-in-string */
 /* eslint-disable react/no-this-in-sfc */
@@ -12,7 +13,6 @@ import { updateState } from '../redux/rockets/rockets';
 
 function RocketsPage() {
   const dispatch = useDispatch();
-  const [rockets, setRockets] = useState([]);
   const fetchItems = async () => {
     const rocketsArray = [];
     const data = await fetch('https://api.spacexdata.com/v3/rockets');
@@ -27,15 +27,16 @@ function RocketsPage() {
       };
       rocketsArray.push(rocketObject);
     });
-    setRockets(rocketsArray);
     dispatch(updateState(rocketsArray));
   };
 
-  const storeRockets = useSelector((state, RootStateOrAny) => state.rocketsReducer);
-
   useEffect(() => {
-    fetchItems();
+    if (storeRockets.length === 0) {
+      fetchItems();
+    }
   }, []);
+
+  const storeRockets = useSelector((state, RootStateOrAny) => state.rocketsReducer);
 
   function reserveRocket(index) { // the curly brace opens a multiline function
     const rocketsArray = [...storeRockets];
@@ -44,12 +45,11 @@ function RocketsPage() {
     } else {
       rocketsArray[index - 1].reserved = true;
     }
-    setRockets(rocketsArray);
-    dispatch(updateState(rockets));
+    dispatch(updateState(rocketsArray));
   }
 
-  function showReservation (rocketName, description) {
-    if (document.getElementById(rocketName).classList.contains('btn-primary') === false) {
+  function showReservation (reserved, rocketName, description) {
+    if (reserved === false) {
       document.getElementById(rocketName).classList.add('btn-primary');
       document.getElementById(rocketName).innerHTML = 'Reserve Rocket';
       document.getElementById(description).style.display = 'none';
@@ -60,9 +60,15 @@ function RocketsPage() {
     }
   }
 
+  const checkReserved = (reserved, rocketName, description) => {
+    if (reserved === true) {
+      setTimeout(() => { showReservation(reserved, rocketName, description); }, 100);
+    }
+  };
+
   return (
     <div className="page">
-      {rockets.map((rocket) => (
+      {storeRockets.map((rocket) => (
         <div className="rocket">
           <img src={rocket.image[0]} alt="rocket" width="150px" />
           <div className="rocket_details">
@@ -78,11 +84,14 @@ function RocketsPage() {
                 id={rocket.rocket_name}
                 onClick={() => {
                   reserveRocket(rocket.id);
-                  showReservation(rocket.rocket_name, rocket.description, rockets.flickr_images);
+                  showReservation(rocket.reserved, rocket.rocket_name, rocket.description);
                 }}
               >
                 Reserve Rocket
               </button>
+              <div>
+                {checkReserved(rocket.reserved, rocket.rocket_name, rocket.description)}
+              </div>
             </div>
           </div>
         </div>

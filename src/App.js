@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Provider } from 'react-redux';
 import {
   BrowserRouter as Router,
