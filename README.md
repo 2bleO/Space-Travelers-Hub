@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Space-travelers-hub
+This is a React web application for a company that provides commercial and scientific space travel services. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Screenshot](./screenshot1.png)
+![Screenshot](./screenshot2.png)
 
-## Available Scripts
 
-In the project directory, you can run:
+Additional description of the project and its features.
 
-### `npm start`
+## 🔴  Live Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[Space-travelers-hub](https://vigorous-jang-d9676c.netlify.app)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Project Overview Video
 
-### `npm test`
+[Watch Here](https://www.loom.com/share/22b0607f2e7348cb9575c43d241d600c)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Built With
 
-### `npm run build`
+- HTML
+- CSS
+- React
+- Redux
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To get a local copy up and running follow these simple steps inside the root folder.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Setup
 
-### `npm run eject`
+Install dependencies with:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+npm install
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Start server with:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+npm start
+```
 
-## Learn More
+it will open `http://localhost:3000/` in your default browser.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Authors
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+👤 **Onesis Olea**
 
-### Code Splitting
+- Github: [2bleO](https://github.com/2bleO)
+- Linkedin: [Onesis Olea](https://www.linkedin.com/in/onesis-olea/)
+- Twitter: [@OleaOnesis](https://twitter.com/OleaOnesis)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+👤 **Erez Friemagor**
 
-### Analyzing the Bundle Size
+Github: [@erezfree29](https://github.com/erezfree29)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Twitter: [@friemagor](https://twitter.com/friemagor)
 
-### Making a Progressive Web App
+LinkedIn: [Stephan Annandale](https://www.linkedin.com/in/erez-friemagor/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🤝 Contributing
 
-### Advanced Configuration
+Contributions, issues and feature requests are welcome!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Feel free to check the [issues page]().
 
-### Deployment
+## Show your support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Give a ⭐️ if you like this project!
 
-### `npm run build` fails to minify
+## Acknowledgments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Microverse
+
+## 📝 License
+
+This project is MIT Lisenced
