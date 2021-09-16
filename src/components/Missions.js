@@ -1,5 +1,5 @@
 import {
-  Table, Badge, Button,
+  Table, Badge, Button, Container,
 } from 'react-bootstrap';
 import { useEffect, React } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,8 +24,8 @@ const Missions = () => {
   };
 
   return (
-    <>
-      <Table className="table">
+    <Container fluid className="table-responsive-sm">
+      <Table className="my-3 table-bordered table-striped">
         <thead>
           <tr>
             <th scope="col">Mission</th>
@@ -39,7 +39,7 @@ const Missions = () => {
             <tr key={mission.mission_id}>
               <th scope="row">{mission.mission_name}</th>
               <td>{mission.description}</td>
-              <td>
+              <td className="px-4 align-middle">
                 {
                 mission.reserved ? (
                   <Badge className="bg-info">Active&nbsp;Member</Badge>
@@ -48,7 +48,7 @@ const Missions = () => {
                 )
                 }
               </td>
-              <td>
+              <td className="px-4 align-middle">
                 {
                 mission.reserved ? (
                   <Button variant="outline-danger" id={mission.mission_id} onClick={leave}>Leave&nbsp;Mission</Button>
@@ -61,7 +61,7 @@ const Missions = () => {
           ))}
         </tbody>
       </Table>
-    </>
+    </Container>
   );
 };
 
