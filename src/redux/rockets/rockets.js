@@ -1,15 +1,15 @@
 /* eslint-disable import/prefer-default-export */
-const GET_ROCKETS = 'bookStore/books/GET_ROCKETS';
+const SET_ROCKETS = 'bookStore/books/GET_ROCKETS';
 const initialState = [];
 
-export const getRockets = (payload) => ({
-  type: GET_ROCKETS,
+export const updateState = (payload) => ({
+  type: SET_ROCKETS,
   payload,
 });
 
 const rocketsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_ROCKETS:
+    case SET_ROCKETS:
       return action.payload;
     default:
       return state;

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Provider } from 'react-redux';
 import {
   BrowserRouter as Router,
@@ -7,9 +8,9 @@ import {
 import { store } from './redux/configureStore';
 
 import Header from './components/Header';
-import Missions from './components/Missions';
+import MissionsPage from './components/Missions';
 import RocketsPage from './components/Rockets';
-import Myprofile from './components/Myprofile';
+import MyprofilePage from './components/Myprofile';
 
 function App() {
   return (
@@ -24,14 +25,29 @@ function App() {
             <Route path="/missions">
               <Missions />
             </Route>
+            <Route exact path="/rockets">
+              <Rockets />
+            </Route>
             <Route exact path="/">
-              <RocketsPage />
+              <Rockets />
             </Route>
           </Switch>
         </div>
       </Router>
     </Provider>
   );
+}
+
+function Rockets() {
+  return <RocketsPage />;
+}
+
+function Missions() {
+  return <MissionsPage />;
+}
+
+function Myprofile() {
+  return <MyprofilePage />;
 }
 
 export default App;

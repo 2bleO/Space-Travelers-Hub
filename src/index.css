@@ -35,8 +35,8 @@ nav {
 }
 
 .links {
+  margin-right: 12%;
   display: flex;
-  margin-right: 8%;
 }
 
 .links a {
@@ -51,11 +51,12 @@ nav {
 .link {
   margin-left: 2%;
   padding: 2px;
-  width: 80px;
+  width: 120px;
 }
 
 h1 {
   font-size: 30px;
+  margin-left: 180px;
 }
 
 .planet {
@@ -70,5 +71,26 @@ h1 {
 }
 
 .rocket {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.rocket_details {
+  margin-left: 5%;
+  width: 700px;
+  height: 100%;
+}
+
+.description {
+  margin-bottom: 2%;
+  display: flex;
+}
+
+.reserved {
+  margin-right: 2%;
+  background-color: #18a2b8;
+  color: white;
+  height: 12%;
+  width: 140px;
+  display: none;
 }
