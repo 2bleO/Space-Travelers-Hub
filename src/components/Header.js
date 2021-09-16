@@ -4,7 +4,7 @@ import planet from './planet.png';
 
 const Header = () => (
   <>
-    <nav className="navbar navbar-light">
+    <nav className="navbar navbar-light d-flex">
       <div className="brand d-flex">
         <img src={planet} alt="planet" width="50px" className="navbar-brand planet" />
         <h1 className="title">Space Travelers&lsquo;s Hub </h1>
