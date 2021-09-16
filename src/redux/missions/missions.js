@@ -1,37 +1,52 @@
 import axios from 'axios';
 
-const GET_MISSIONS = 'Space-Travelers-Hub/missions/GET_MISSIONS';
+const GET_MISSIONS = 'missions/GET_MISSIONS';
+const JOIN_MISSION = 'missions/JOIN_MISSION';
+const LEAVE_MISSION = 'missions/LEAVE_MISSION';
 
 const initialState = [];
 const BASE_URL = 'https://api.spacexdata.com/v3';
 
-export const getMissions = async () => {
+export const getMissions = () => async (dispatch) => {
   const missions = await axios.get(`${BASE_URL}/missions`);
-  // const data = await fetch(`${BASE_URL}/missions`);
-  // const missionsObj = await missions.data;
-  // const missions = await data.json();
-  console.log(missions.data);
-  /*
-  const list = Object.keys(booksObj);
-  const fetchedBooks = [];
-  list.map((book) => fetchedBooks.push({
-    id: book,
-    title: booksObj[book][0].title,
-    category: booksObj[book][0].category,
-    author: 'SomeOne',
-    progress: '15%',
-    currentChapter: 'Chapter 5',
-  }));
-  await dispatch({
+  const missionsArr = await missions.data;
+  const list = [...missionsArr];
+
+  dispatch({
     type: GET_MISSIONS,
-    payload: fetchedBooks,
-  }); */
+    payload: list,
+  });
 };
 
+export const joinMission = (id) => ({
+  type: JOIN_MISSION,
+  payload: id,
+});
+
+export const leaveMission = (id) => ({
+  type: LEAVE_MISSION,
+  payload: id,
+});
+
 const reducer = (state = initialState, action) => {
+  let newState;
   switch (action.type) {
     case GET_MISSIONS:
       return [...action.payload];
+
+    case JOIN_MISSION:
+      newState = state.map((mission) => {
+        if (mission.mission_id !== action.payload) return mission;
+        return { ...mission, reserved: true };
+      });
+      return newState;
+
+    case LEAVE_MISSION:
+      newState = state.map((mission) => {
+        if (mission.mission_id !== action.payload) return mission;
+        return { ...mission, reserved: false };
+      });
+      return newState;
 
     default:
       return state;
