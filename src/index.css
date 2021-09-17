@@ -41,6 +41,7 @@ nav {
 
 .links a {
   color: #60aaff;
+  text-decoration: none;
 }
 
 .missions a,
@@ -54,9 +55,12 @@ nav {
   width: 120px;
 }
 
-h1 {
+.brand {
+  align-items: center;
+}
+
+.title {
   font-size: 30px;
-  margin-left: 180px;
 }
 
 .planet {
@@ -91,6 +95,6 @@ h1 {
   background-color: #18a2b8;
   color: white;
   height: 12%;
-  width: 140px;
   display: none;
+  width: 140px;
 }
