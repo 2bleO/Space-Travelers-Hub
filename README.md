@@ -58,7 +58,7 @@ Github: [@erezfree29](https://github.com/erezfree29)
 
 Twitter: [@friemagor](https://twitter.com/friemagor)
 
-LinkedIn: [Stephan Annandale](https://www.linkedin.com/in/erez-friemagor/)
+LinkedIn: [erez friemagor](https://www.linkedin.com/in/erez-friemagor/)
 
 ## 🤝 Contributing
 
