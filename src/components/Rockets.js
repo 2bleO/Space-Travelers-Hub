@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { updateState } from '../redux/rockets/rockets';
+import { removeRocket, reserveRocket, updateState } from '../redux/rockets/rockets';
 
 function RocketsPage() {
   const dispatch = useDispatch();
@@ -32,14 +32,13 @@ function RocketsPage() {
     }
   }, []);
 
-  function reserveRocket(index) { // the curly brace opens a multiline function
+  function updateRocket(index) { // the curly brace opens a multiline function
     const rocketsArray = [...storeRockets];
-    if (rocketsArray[index - 1].reserved === true) {
-      rocketsArray[index - 1].reserved = false;
+    if (rocketsArray[index - 1].reserved === false) {
+      dispatch(reserveRocket(index - 1));
     } else {
-      rocketsArray[index - 1].reserved = true;
+      dispatch(removeRocket(index - 1));
     }
-    dispatch(updateState(rocketsArray));
   }
 
   function showReservation(reserved, rocketName, description) {
@@ -77,7 +76,7 @@ function RocketsPage() {
                 className="btn btn-primary"
                 id={rocket.rocket_name}
                 onClick={() => {
-                  reserveRocket(rocket.id);
+                  updateRocket(rocket.id);
                   showReservation(rocket.reserved, rocket.rocket_name, rocket.description);
                 }}
               >
