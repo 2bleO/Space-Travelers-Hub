@@ -27,8 +27,8 @@ code {
 }
 
 nav {
-  display: flex;
   justify-content: space-between;
+  display: flex;
   align-items: center;
   width: 100vw;
   border-bottom: solid 1px #dee2e6;
