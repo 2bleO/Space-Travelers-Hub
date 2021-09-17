@@ -9,7 +9,7 @@ import '@testing-library/jest-dom/extend-expect';
 describe('Missions', () => {
   test('renders Missions component', () => {
     render(<Provider store={store}><Router><MissionsPage /></Router></Provider>);
- 
+
     expect(screen.getByText(/Mission/)).toBeInTheDocument();
   });
 });
